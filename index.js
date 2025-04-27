@@ -26,7 +26,9 @@ const inventory = [
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
-  // TODO: use `forEach`
+  items.forEach(function (item) {
+    console.log(item.name);
+  });
 }
 
 /**
@@ -34,7 +36,10 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
-  // TODO: use `map`
+  const newList = items.map(function (item) {
+    return item.name.toUpperCase();
+  });
+  return newList;
 }
 
 /**
@@ -43,7 +48,10 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
-  // TODO: use `find`
+  const foundItem = items.find(function (item) {
+    return item.id === id;
+  });
+  return foundItem;
 }
 
 /**
@@ -52,7 +60,11 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name` if found
  */
 function getItemPriceByName(items, name) {
-  // TODO: use a loop!
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].name === name) {
+      return items[i].price;
+    }
+  }
 }
 
 /**
@@ -61,7 +73,10 @@ function getItemPriceByName(items, name) {
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
-  // TODO: use `filter`
+  const filteredItems = items.filter(function (item) {
+    return item.category === category;
+  });
+  return filteredItems;
 }
 
 /**
@@ -69,7 +84,10 @@ function getItemsByCategory(items, category) {
  * @returns {number} the total quantity of all items
  */
 function countItems(items) {
-  // TODO: use `reduce`
+  const totalQuantity = items.reduce(function (sum, item) {
+    return sum + item.quantity;
+  }, 0);
+  return totalQuantity;
 }
 
 /**
@@ -77,9 +95,11 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function getTotalPrice(items) {
-  // TODO: use `reduce`
+  const totalPrice = items.reduce(function (sum, item) {
+    return sum + item.price;
+  }, 0);
+  return totalPrice;
 }
-
 // === READ BUT DO NOT CHANGE THE CODE BELOW ===
 
 console.log("Welcome! We carry the following items:");
